@@ -1,8 +1,11 @@
 """TO DO: Add a Shebang"""
+#!/usr/bin/env python3
 
 """TO DO: Import urljoin from urllib.parse"""
+from urllib.parse import urljoin
 
 """TO DO: Import the requests"""
+import requests
 
 class API(object):
 
@@ -34,23 +37,78 @@ class API(object):
         return response
 
     def read_all_tasks(self, cookie):
-        pass
+        """ Read all tasks
+        Parameters:
+            cookie (str): Pre-authorized cookie
+        Returns:
+            Response from the server
+        """
+        url = urljoin(self.base_url, "api/v1/tasks")
+        headers = {
+            'Content-Type': 'application/json',
+            'Cookie': 'it210_session=' + cookie
+        }
+        response = requests.request("GET", url, headers=headers)
+        return response
 
     def read_task(self, cookie, task_id):
-        pass
+        """ Read specific task
+        Parameters:
+            cookie (str): Pre-authorized cookie
+            task_id: Identifying number assigned to task in the database
+        Returns:
+            Response from the server
+        """
+        url = urljoin(self.base_url, "api/v1/tasks/" + task_id)
+        headers = {
+            'Content-Type': 'application/json',
+            'Cookie': 'it210_session=' + cookie
+        }
+        response = requests.request("GET", url, headers=headers)
+        return response
 
-    def update_task(self, cookie, task_id, Done):
-        pass
-        # Note: Cast your `Done` parameter to a
-        # string, and use the `.lower()` method
-        # on it, before you stick it in the
-        # `data` object.
+    def update_task(self, cookie, task_id, Done): 
+        """ Update a task with completion status
+        Parameters:
+            cookie (str): Pre-authorized cookie
+            task_id: Identifying number assigned to task in the database
+            Done (str): Mark task as done
+        Returns:
+            Response from the server
+        """
+        url = urljoin(self.base_url, "api/v1/tasks/" + task_id)
+        data = '{ "Done": "%s" }' % (str(Done).lower())
+        headers = {
+            'Content-Type': 'application/json',
+            'Cookie': 'it210_session=' + cookie
+        }
+        response = requests.request("PUT", url, headers=headers, data=data)
+        return response
 
     def delete_task(self, cookie, task_id):
-        pass
+        """ Delete a task
+        Parameters:
+            cookie (str): Pre-authorized cookie
+            task_id: Identifying number assigned to task in the database
+        Returns:
+            Response from the server
+        """
+        url = urljoin(self.base_url, "api/v1/tasks/" + task_id)
+        headers = {
+            'Content-Type': 'application/json',
+            'Cookie': 'it210_session=' + cookie
+        }
+        response = requests.request("DELETE", url, headers=headers)
+        return response
 
     def read_current_user(self, cookie):
-        pass
+        url = urljoin(self.base_url, "api/v1/user")
+        headers = {
+            'Content-Type': 'application/json',
+            'Cookie': 'it210_session=' + cookie
+        }
+        response = requests.request("GET", url, headers=headers)
+        return response
 
 if __name__ == "__main__":
     # Remember, this section of code is for you. Do with
@@ -60,9 +118,16 @@ if __name__ == "__main__":
     # many `print()`s, the output becomes overloaded and
     # unhelpful, but again, this is personal preference.
     base_url = "https://s1.byu-itc-210.net:1337"
-    cookie = "s%3Avz...0dOSwwD5amLfV_wJuwVmxYmu1Kq.Wn2y9mhJAI7zlxQd%2FvSOTBB9lWfgpElvtEzhKIs6cq0"
+    cookie = "s:FawzjCX_0g7xK5Ws42wCyOD8MwLWkSJO.Oq3fKetz1j/NMI2+qz3KN21kZEkvPT40Y1m6WoLYrVA"
+    id = "63692e586bcd2d42d3529515"
     api = API(base_url)
-    response = api.create_task(cookie, "Test the API", "2020-02-20")
+    #response = api.create_task(cookie, "Test the API", "2020-02-20") #works!
+    #response = api.read_all_tasks(cookie) #works!
+    #response = api.read_task(cookie, id) #works! 
+    response = api.update_task(cookie, id, True) #not working
+    #response = api.delete_task(cookie, id) #works!
+    #response = api.read_current_user(cookie) #works!
+
     print(response.ok)
     print(response.status_code)
     print(response.text)
