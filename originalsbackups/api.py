@@ -124,13 +124,13 @@ if __name__ == "__main__":
     #response = api.create_task(cookie, "Test the API", "2020-02-20") #works!
     #response = api.read_all_tasks(cookie) #works!
     #response = api.read_task(cookie, id) #works! 
-    #response = api.update_task(cookie, id, True) #works!
+    response = api.update_task(cookie, id, True) #works!
     #response = api.delete_task(cookie, id) #works!
     #response = api.read_current_user(cookie) #works!
 
-    # print(response.ok)
-    # print(response.status_code)
-    # print(response.text)
-    # print(response.json())
+    print(response.ok)
+    print(response.status_code)
+    print(response.text)
+    print(response.json())
 
 

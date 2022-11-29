@@ -51,11 +51,10 @@ def generate_random_date(year=None, month=None, date=None):
 class TestAPI(unittest.TestCase):
 
     # TODO: update the cookie value and uncomment the desired `base_url, cookie` pair when ready to test
-    # base_url, cookie = "https://s1.byu-itc-210.net:1337", "s:f9j--gAqO30dmhX0awfGiNaFuq_xmLJT.i8VUGln61vuBZvVSDwFm3qvk/pQ598PWiyTHvbAtVPA" # For s1
+    base_url, cookie = "https://s1.byu-itc-210.net:1337", "s:f9j--gAqO30dmhX0awfGiNaFuq_xmLJT.i8VUGln61vuBZvVSDwFm3qvk/pQ598PWiyTHvbAtVPA" # For s1
     # base_url, cookie = "https://s2.byu-itc-210.net:1338", "s:1XLt8CqzxEe0Tm3Y_7sNp3uHrJlLrilo.m6QwumcpXM7OkoRRVNtWywZCvmwFn1vOSXapWzyvN+A" # For s2
     # base_url, cookie = "https://s3.byu-itc-210.net:1339", "s:2SR-cptPEX-7nI7W-QMpLyUbKMGEw8di.sIOFQFskTtNDguA08Y3gtLz34eO/6xNGYTtzgcJaLsk" # For s3
     # base_url, cookie = "https://s4.byu-itc-210.net:1340", "s:SAfGzDCYOLaSpCeH6s1mOOJaWtNK3kx_.o+YkhhZF7SR5YXVbV4Tj5QkUtGxc+up2IilJJckTDD8" # For s4
-    base_url, cookie = "http://localhost:1337", "s%3AHVJoF5lqO3PHyRHGLaafbJsE2urTRM72.vLiHD1E%2FTdYB5bK%2BWdrjDyHnJHtxVf5m4nF2iB%2FULng" # For lab 6a
 
     # This will be ran once, when you start your tests.
     @classmethod
