@@ -4,6 +4,9 @@ import string
 import unittest
 from api import API
 
+# IF python command isnt working, use
+# & 'C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python39_64\python.exe' .\test_api.py
+
 def generate_random_text(l=10):
     """ Helper to generate random text for creating new tasks.
     This is helpful and will ensure that when you run your tests,
@@ -55,7 +58,9 @@ class TestAPI(unittest.TestCase):
     # base_url, cookie = "https://s2.byu-itc-210.net:1338", "s:1XLt8CqzxEe0Tm3Y_7sNp3uHrJlLrilo.m6QwumcpXM7OkoRRVNtWywZCvmwFn1vOSXapWzyvN+A" # For s2
     # base_url, cookie = "https://s3.byu-itc-210.net:1339", "s:2SR-cptPEX-7nI7W-QMpLyUbKMGEw8di.sIOFQFskTtNDguA08Y3gtLz34eO/6xNGYTtzgcJaLsk" # For s3
     # base_url, cookie = "https://s4.byu-itc-210.net:1340", "s:SAfGzDCYOLaSpCeH6s1mOOJaWtNK3kx_.o+YkhhZF7SR5YXVbV4Tj5QkUtGxc+up2IilJJckTDD8" # For s4
-    base_url, cookie = "http://localhost:1337", "s%3AHVJoF5lqO3PHyRHGLaafbJsE2urTRM72.vLiHD1E%2FTdYB5bK%2BWdrjDyHnJHtxVf5m4nF2iB%2FULng" # For lab 6a
+    # base_url, cookie = "http://localhost:1337", "s%3AHVJoF5lqO3PHyRHGLaafbJsE2urTRM72.vLiHD1E%2FTdYB5bK%2BWdrjDyHnJHtxVf5m4nF2iB%2FULng" # For lab 6a
+    base_url, cookie = "https://zconlin.zapto.org:1337", "s%3ApxMjfx0P4EMPNrvcOArDc6JjNK3POdSc.cfrR%2FnxgXu31nxp148t3gTCcsRljO562UWsrZ1RU4YA" # For lab 6a live server
+
 
     # This will be ran once, when you start your tests.
     @classmethod
